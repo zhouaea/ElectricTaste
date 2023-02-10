@@ -1,6 +1,6 @@
 # Tongue Buds: A DIY Electricity-Based Taste Interface Device 
 
-The primary way that most people receive output from their devices are through sight and sound. However, there are no fundamental limitations that prevent computers from being able to transmit data through other senses. After all, any kind of data can be represented with binary digits. In their [seminal paper in 2011] (https://dl.acm.org/doi/abs/10.1145/2030112.2030213), Ranasinghe and colleagues found that they could simulate sour, salty, and bitter sensations via electrodes by transmitting different amounts of electric current on the tongue.  
+The primary way that most people receive output from their devices are through sight and sound. However, there are no fundamental limitations that prevent computers from being able to transmit data through other senses. After all, any kind of data can be represented with binary digits. In their [seminal paper in 2011](https://dl.acm.org/doi/abs/10.1145/2030112.2030213), Ranasinghe and colleagues found that they could simulate sour, salty, and bitter sensations via electrodes by transmitting different amounts of electric current on the tongue.  
 
 ![image](https://user-images.githubusercontent.com/75145715/217974514-855754fd-5c83-465c-86cd-e68d7eb6cd61.png)
 
