@@ -1,47 +1,51 @@
 # Tongue Buds: A DIY Electricity-Based Taste Interface Device 
 
-The primary way that most people receive output from their devices are through sight and sound. However, there are no fundamental limitations that prevent computers from being able to transmit data through other senses. After all, any kind of data can be represented with binary digits. 
+The primary way that most people receive output from their devices are through sight and sound. But why not through taste? After all, any kind of data can be represented with binary digits. 
 
 In their [seminal paper in 2011](https://dl.acm.org/doi/abs/10.1145/2030112.2030213), Ranasinghe and colleagues found that they could simulate sour, salty, and bitter sensations via electrodes by transmitting different amounts of electric current on the tongue.
 
 ![image](https://user-images.githubusercontent.com/75145715/217974514-855754fd-5c83-465c-86cd-e68d7eb6cd61.png)
 
-Since the publication of this paper, research on taste-based computer interfaces has gotten impressively sophisticated (See further reading section below). The implications for this technology are incredible: it would essentially allow people to enjoy flavor without eating food, birthing everything from dieting products, specialized silverware that enhances the flavor of food, to even taste as a language.
+Since the publication of this paper, research on taste-based computer interfaces has gotten incredibly sophisticated (See the research papers in the further reading section below). The implications for this technology are incredible: it would essentially allow people to enjoy flavor without eating food, birthing everything from dieting products, specialized silverware that enhances the flavor of food, to even a language system based on taste.
 
-This stuff is really exciting to think about. Discussing it with friends, even more incredible is how taste-based interfaces could integrate with digital media. We could have a Spotify for flavors, where musicians become chefs, or integration with social media, where anyone can share the flavors of their food pictures. We could taste the food in video games and VR/AR applications, or even somehow integrate taste into movies. 
+Even more incredible is how taste-based interfaces could integrate with digital media. We could have a Spotify for flavors, where musicians become chefs, or integration with social media, where anyone can share the flavors of their food pictures. We could taste the food we see in video games and VR/AR applications, or even somehow integrate taste into movies. 
 
-Given the ramifications of this technology, I wanted to make a prototype for myself. Over the course of a week, I tried to create an equivalent device to the 2011 paper using a basic arduino kit. Arduinos are programmable circuit boards that usually come with some cheap wires, sensors, and motors that can be connected to eachother using a block with a bunch of holes in it called a breadboard.
+Given the ramifications of this technology, I wanted to make a prototype for myself. Over the course of five days, I tried to create an equivalent device to the 2011 paper using a basic arduino kit. Arduinos are programmable circuit boards that usually come with some cheap wires, sensors, and motors. These componenets are all wired to eachother with a breadboard, a plastic block with a bunch of holes and electrical strips inside of it. 
 
 ## Table of Contents
-- Background Knowledge
-- Design Process
+- Recap: Voltage, Resistance, Current
+- My Design Process
 - My Experience Testing The Device
-- How To Use
-- Future Projects
+- Ideas For Future Projects
+- How To Make/Use
 - Further Reading
 
-## Background Knowledge
-To understand how the device works, one needs to have a basic understanding of electricity: specifically voltage, resistance, and current. 
-
+## Recap: Voltage, Resistance, Current
+To understand how this device works and why I designed it the way I did, you need to have a basic understanding of electricity. The easiest way to explain these concepts is by comparing electricity to water. Voltage is like water pressure, current is the rate at which the water is flowing, and resistance is how small the water pipe is. Voltage is measured in volts, current is measured in amps, and resistance is measured in ohms.
 ![image](https://user-images.githubusercontent.com/75145715/219905708-d8dc62b0-a00d-44fc-9840-56b0154beca6.png)
 
-Comparing electricity to water, voltage is like the water pressure, current is the rate at which the water is flowing, and resistance is how small the water pipe is. Voltage is measured in volts, current is measured in amps, and resistance is measured in ohms. You can express the relationship between these three measurements with the formula voltage = current * resistance.
+## My Design Process
+The key to this device is to essentially put the tongue in an electric circuit. The arudino supplies the voltage, and the tongue acts as the resistance the electricity needs to pass through to complete the circuit. 
 
-## Design Process
-The key to this device is to essentially add the tongue to an electric circuit. The arudino supplies the voltage, and the tongue acts as the resistance the electricity needs to pass through to complete the circuit. 
+One issue I was especially worried about was safety. I didn't want to accidentally fry someone's tongue. I did some research and found that people tend to feel a tingling sensation when an electric current is [around 1-5 milliamps](https://www.sparkfun.com/news/1385). The maximum current applied in the 2011 paper was 250 microamps, or about 4-20 times less than what would cause a tingling sensation, so I realized I was good on the safety side. 
 
-One issue at the beginning I was especially worried about was safety. I didn't want to accidentally fry someone's tongue. For reference, people tend to feel a tingling sensation when the current is [around 1-5 milliamps](https://www.sparkfun.com/news/1385). However, the maximum current applied in the 2011 paper was 250 microamps, or about 4-20 times less than that, so I realized I was good on the safety side. 
-
-All that was left was the mechanism for simulating different flavors. As shown in the table from the paper above, to simulate specific flavor sensations you have to apply a specific amount of electric current to the tongue. Unfortunately, arduinos can only directly vary voltage. I remember spending a decent amount of time researching how I could get an arduino to apply a constant current source, but basically every option required some electrical engineering knowledge that I didn't have. So eventually, I ended up opting for the simplest possible method, which was to connect a device that could measure current (an ammeter) to the circuit, and manually adjust the voltage (indirectly changing the current, since the resistance of the circuit, the tongue, would be the same) via a videogame joystick. 
+All that was left was the mechanism for simulating different flavors. As shown in the table from the paper above, to simulate specific flavor sensations you have to apply a specific amount of electric current to the tongue. Unfortunately, arduinos can only directly vary voltage. I remember spending a decent amount of time researching how I could get an arduino to apply a constant current source, but basically every option required some electrical engineering knowledge that I didn't have. So eventually, I ended up opting for the simplest possible method, which was to connect a device that could measure current to the circuit, and manually adjust the voltage (indirectly changing the current, since the resistance of the circuit, the tongue, would be the same) via a videogame joystick. 
 
 ## My Experience Testing the Device
-I was a little worried if my device would work when I did some back of the envelope calculations. The average resistance of a human tongue is around 70,000 ohms. V = IR, so at the maximum voltage of the arduino, 5V, 5 / 70000 is approximately 70 microamps, which is actually not enough for the full range shown in the chart. When I actually tested the device with real people, I was able to consistently get up to around 200-300 microamps of current, so luckily the estimates online were on the high side. 
+I was a little worried if my device would work when I did some back of the envelope calculations. (Online, I found that the average resistance of a human tongue is around 70,000 ohms. V = IR, so at the maximum voltage of the arduino, 5V, 5 / 70000 is approximately 70 microamps, which is not enough for the full range shown in the chart.) 
 
-Getting up to around 200 microamps, the taste was really sour. The sour aftertaste in my tongue lasted for a while, at least a couple of hours actually, so 200 microamps might be too high for a commerical product :P. While it is sour, kind of like a lemon, it has a distinctly metallic and bitter flavor that comes with it as well. When we tried the lower currents to activate saltiness, it was salty, but there was also always that same sour metallic taste included with it as well. 
+When I actually tested the device with real people, I was able to consistently get up to around 200-300 microamps of current, so luckily the numbers I used were inaccurate.
 
-## How to Use
+Getting up to around 200 microamps, the taste was really sour. The sour aftertaste in my tongue lasted for a while, at least a couple of hours actually, so 200 microamps might be too high for a commerical product. While it is sour, kind of like a lemon, it has a distinctly metallic and bitter flavor that comes with it as well. When we tried the lower currents to activate saltiness, it was salty, but there was also always that same sour metallic taste included with it as well. 
+
+## Ideas For Future Projects
+An interesting project I never got around to is testing how taste interacts with sight and sound by synchronizing the machine to a youtube video. What if we added the sour taste while watching someone eat a lemon? Or adding a sour taste to a video of someone eating a non-sour food? 
+
+To do this would involve two things: a program that can read the timestamp of a youtube video and trigger an event, and a modified version of this device that can adjust its current automatically. 
+
+## How to Make/Use
 ![taste-machine](https://user-images.githubusercontent.com/75145715/217975376-5f3efdf2-4b81-441b-a378-69bc5c205603.JPG)
-The device consists of only five components: an arduino, an ammeter, a joystick, a breadboard, and a few copper wires. The arduino outputs a voltage from 0-5V that is manually operated by the joystick. There are two copper wires that the user puts on their tongue. Below is a close up of the breadboard and arduino that will match with the ports the code in this repo is looking for.
+The device consists of only five components: an arduino, an ammeter, a joystick, a breadboard, and a few copper wires. The arduino outputs a voltage from 0-5V that is manually operated by the joystick. There are two copper wires that the user puts on their tongue. Below is a close up of the breadboard and arduino that will match with the ports the code in this repo is looking for. I bought the ammeter on Amazon and got all of these componenets from the Elegato Uno Super Starter Kit.
 
 ![taste-machine-closeup](https://user-images.githubusercontent.com/75145715/217977514-e5039ec3-74ff-4130-a151-9cb9f1d1020b.JPG)
 
@@ -54,9 +58,6 @@ These were the steps we followed to run the device:
 6. To obtain specific taste sensations, adjust the joystick to get specific microamp readings on the ammeter that match with the figure above.
 
 ![taste-machine-test](https://user-images.githubusercontent.com/75145715/217976367-1fca4032-1524-4a3e-813d-2c0e32eefc3d.jpg)
-
-## Future Projects
-An interesting project I never got around to is testing how taste interacts with sight and sound by synchronizing the machine to a youtube video. What if we added the sour taste while watching someone eat a lemon? Or adding a sour taste to a video of someone eating a non-sour food?
 
 ## Further Reading
 Below are some resources, not only on taste technology, but multisensory technology in general.
