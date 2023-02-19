@@ -15,8 +15,7 @@ Given the ramifications of this technology, I wanted to make a prototype for mys
 ## Table of Contents
 - Background Knowledge
 - Design Process
-- Testing The Device
-- The Device
+- My Experience Testing The Device
 - How To Use
 - Future Projects
 - Further Reading
@@ -35,7 +34,7 @@ One issue at the beginning I was especially worried about was safety. I didn't w
 
 All that was left was the mechanism for simulating different flavors. As shown in the table from the paper above, to simulate specific flavor sensations you have to apply a specific amount of electric current to the tongue. Unfortunately, arduinos can only directly vary voltage. I remember spending a decent amount of time researching how I could get an arduino to apply a constant current source, but basically every option required some electrical engineering knowledge that I didn't have. So eventually, I ended up opting for the simplest possible method, which was to connect a device that could measure current (an ammeter) to the circuit, and manually adjust the voltage (indirectly changing the current, since the resistance of the circuit, the tongue, would be the same) via a videogame joystick. 
 
-## Testing the Device
+## My Experience Testing the Device
 I was a little worried if my device would work when I did some back of the envelope calculations. The average resistance of a human tongue is around 70,000 ohms. V = IR, so at the maximum voltage of the arduino, 5V, 5 / 70000 is approximately 70 microamps, which is actually not enough for the full range shown in the chart. When I actually tested the device with real people, I was able to consistently get up to around 200-300 microamps of current, so luckily the estimates online were on the high side. 
 
 Getting up to around 200 microamps, the taste was really sour. The sour aftertaste in my tongue lasted for a while, at least a couple of hours actually, so 200 microamps might be too high for a commerical product :P. While it is sour, kind of like a lemon, it has a distinctly metallic and bitter flavor that comes with it as well. When we tried the lower currents to activate saltiness, it was salty, but there was also always that same sour metallic taste included with it as well. 
