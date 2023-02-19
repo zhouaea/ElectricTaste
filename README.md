@@ -24,7 +24,7 @@ Given the ramifications of this technology, I wanted to make a prototype for mys
 ## Background Knowledge
 To understand how the device works, one needs to have a basic understanding of electricity: specifically voltage, resistance, and current. 
 
-![image](https://user-images.githubusercontent.com/75145715/218164189-b81cdb46-67fc-4eeb-9853-b8f3aed5673c.png)
+![image](https://user-images.githubusercontent.com/75145715/219905708-d8dc62b0-a00d-44fc-9840-56b0154beca6.png)
 
 Comparing electricity to water, voltage is like the water pressure, current is the rate at which the water is flowing, and resistance is how small the water pipe is. Voltage is measured in volts, current is measured in amps, and resistance is measured in ohms. You can express the relationship between these three measurements with the formula voltage = current * resistance.
 
