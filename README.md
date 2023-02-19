@@ -6,7 +6,7 @@ In their [seminal paper in 2011](https://dl.acm.org/doi/abs/10.1145/2030112.2030
 
 ![image](https://user-images.githubusercontent.com/75145715/217974514-855754fd-5c83-465c-86cd-e68d7eb6cd61.png)
 
-Since the publicatiion of this paper, research on taste-based computer interfaces has gotten impressively sophisticated (See further reading section below). The implications for this technology are incredible: it would essentially allow people to enjoy flavor without eating food, birthing everything from dieting products, specialized silverware that enhances the flavor of food, to even taste as a language.
+Since the publication of this paper, research on taste-based computer interfaces has gotten impressively sophisticated (See further reading section below). The implications for this technology are incredible: it would essentially allow people to enjoy flavor without eating food, birthing everything from dieting products, specialized silverware that enhances the flavor of food, to even taste as a language.
 
 This stuff is really exciting to think about. Discussing it with friends, even more incredible is how taste-based interfaces could integrate with digital media. We could have a Spotify for flavors, where musicians become chefs, or integration with social media, where anyone can share the flavors of their food pictures. We could taste the food in video games and VR/AR applications, or even somehow integrate taste into movies. 
 
@@ -25,19 +25,20 @@ Given the ramifications of this technology, I wanted to make a prototype for mys
 To understand how the device works, one needs to have a basic understanding of electricity: specifically voltage, resistance, and current. 
 
 ![image](https://user-images.githubusercontent.com/75145715/218164189-b81cdb46-67fc-4eeb-9853-b8f3aed5673c.png)
+
 Comparing electricity to water, voltage is like the water pressure, current is the rate at which the water is flowing, and resistance is how small the water pipe is. Voltage is measured in volts, current is measured in amps, and resistance is measured in ohms. You can express the relationship between these three measurements with the formula voltage = current * resistance.
 
 ## Design Process
 The key to this device is to essentially add the tongue to an electric circuit. The arudino supplies the voltage, and the tongue acts as the resistance the electricity needs to pass through to complete the circuit. 
 
-One issue at the beginning I was especially worried about was safety. I didn't want to accidentally fry someone's tongue. For reference, people tend to feel a tingling sensation when the current is [around 1-5 milliamps](https://www.sparkfun.com/news/1385). For reference, the maximum current applied in the 2011 paper was 250 microamps, or about 4-20 times less than that. 
+One issue at the beginning I was especially worried about was safety. I didn't want to accidentally fry someone's tongue. For reference, people tend to feel a tingling sensation when the current is [around 1-5 milliamps](https://www.sparkfun.com/news/1385). However, the maximum current applied in the 2011 paper was 250 microamps, or about 4-20 times less than that, so I realized I was good on the safety side. 
 
-With safety out of the way, all that was left was the mechanism for simulating different flavors. As shown in the table from the paper above, to simulate specific flavor sensations you have to applying a specific amount of electric current to the tongue. Unfortunately, arduinos can only directly vary voltage. I remember spending a decent amount of time researching how I could get an arduino to apply a constant current source, but basically every option required some electrical engineering knowledge that I didn't have. So eventually, I ended up opting for the simplest possible method, which was to connect a device that could measure current (an ammeter) to the circuit, and manually adjust the voltage (indirectly changing the current, since the resistance of the circuit would be the same) via a videogame joystick. 
+All that was left was the mechanism for simulating different flavors. As shown in the table from the paper above, to simulate specific flavor sensations you have to apply a specific amount of electric current to the tongue. Unfortunately, arduinos can only directly vary voltage. I remember spending a decent amount of time researching how I could get an arduino to apply a constant current source, but basically every option required some electrical engineering knowledge that I didn't have. So eventually, I ended up opting for the simplest possible method, which was to connect a device that could measure current (an ammeter) to the circuit, and manually adjust the voltage (indirectly changing the current, since the resistance of the circuit, the tongue, would be the same) via a videogame joystick. 
 
 ## Testing the Device
 I was a little worried if my device would work when I did some back of the envelope calculations. The average resistance of a human tongue is around 70,000 ohms. V = IR, so at the maximum voltage of the arduino, 5V, 5 / 70000 is approximately 70 microamps, which is actually not enough for the full range shown in the chart. When I actually tested the device with real people, I was able to consistently get up to around 200-300 microamps of current, so luckily the estimates online were on the high side. 
 
-Getting up to around 200 microamps, the taste was really sour. The sour aftertaste in my tongue lasted for a while, at least a couple of hours actually, so 200 microamps might be too high for a commerical product :P. While it is sour, kind of like a lemon, it has a distinctly metallic and bitter flavor that comes with it as well. When we tried the lower currents to activate saltiness, it was salty, but there was also always a sour metallic taste included with it as well. 
+Getting up to around 200 microamps, the taste was really sour. The sour aftertaste in my tongue lasted for a while, at least a couple of hours actually, so 200 microamps might be too high for a commerical product :P. While it is sour, kind of like a lemon, it has a distinctly metallic and bitter flavor that comes with it as well. When we tried the lower currents to activate saltiness, it was salty, but there was also always that same sour metallic taste included with it as well. 
 
 ## How to Use
 ![taste-machine](https://user-images.githubusercontent.com/75145715/217975376-5f3efdf2-4b81-441b-a378-69bc5c205603.JPG)
@@ -56,11 +57,10 @@ These were the steps we followed to run the device:
 ![taste-machine-test](https://user-images.githubusercontent.com/75145715/217976367-1fca4032-1524-4a3e-813d-2c0e32eefc3d.jpg)
 
 ## Future Projects
-Testing how taste interacts with sight and sound by synchronizing the machine to a youtube video. What if we added the sour taste while watching someone eat a lemon? Or adding a sour taste to a video of someone eating a non-sour food?
+An interesting project I never got around to is testing how taste interacts with sight and sound by synchronizing the machine to a youtube video. What if we added the sour taste while watching someone eat a lemon? Or adding a sour taste to a video of someone eating a non-sour food?
 
 ## Further Reading
 Below are some resources, not only on taste technology, but multisensory technology in general.
-
 ### Electrical Taste Stimulation
 - Nimesha Ranasinghe and Ellen Yi-Luen Do. 2016. Digital Lollipop: Studying electrical stimulation on the human tongue to simulate taste sensations. ACM Trans. Multimedia Comput. Commun. Appl. 13, 1, Article 5 (October 2016), 22 pages.
   - This one adds inverted current, which stimulates sweetness in addition to sour. First time sweetness has been induced with electricity. They also tried stimulating the left, right, and center of the tip of the tongue, with the left being less sensitive and being unable to perceive bitter. They also found a wide variation of perceived intensity of sourness with the same current levels. It shows that you have to calibrate the system to the user.
@@ -167,4 +167,4 @@ https://www.frontiersin.org/articles/10.3389/fpsyg.2013.00838/full
 - C. F. Dalziel and W. R. Lee. 1968. Reevaluation of lethal electric currents. IEEE Transactions on Industry and General Applications, IGA-4, 5, 467–476.
   - Cited from some other papers, saying 200 micro amps is well below lethal range 
 
-Also check out the only textbook on this subject to my knowledge as of the time of writing this: https://www.amazon.com/exec/obidos/ASIN/0198849621/books24x7com.
+**Also, check out the only textbook on this subject to my knowledge as of the time of writing this: *Multisensory Experiences: Where the Senses Meet Technology*** 
